@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Todo} from "../todo";
 
 @Component({
   selector: 'app-list-todo',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-todo.component.css']
 })
 export class ListTodoComponent implements OnInit {
+  todos = [new Todo("todo 1"), new Todo("todo 2")];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
