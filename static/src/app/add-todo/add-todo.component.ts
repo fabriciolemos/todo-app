@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HeroService} from "../hero.service";
+import {Todo} from "../todo";
 
 @Component({
   selector: 'app-add-todo',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTodoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private heroService: HeroService) {
+  }
 
   ngOnInit() {
   }
 
+  createTodo(description: string) {
+    this.heroService.create(new Todo(description));
+  }
 }

@@ -1,3 +1,1 @@
-<p>
-  add-todo works!
-</p>
+<input #text (keyup.enter)="createTodo(text.value); text.value = ''">
