@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo} from "../todo";
+import {HeroService} from "../hero.service";
 
 @Component({
   selector: 'app-list-todo',
@@ -7,9 +8,10 @@ import {Todo} from "../todo";
   styleUrls: ['./list-todo.component.css']
 })
 export class ListTodoComponent implements OnInit {
-  todos = [new Todo("todo 1"), new Todo("todo 2")];
+  todos: Todo[];
 
-  constructor() {
+  constructor(private heroService: HeroService) {
+    this.todos = heroService.todos;
   }
 
   ngOnInit() {
