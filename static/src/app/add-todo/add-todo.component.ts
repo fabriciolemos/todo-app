@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HeroService} from "../hero.service";
+import {TodoService} from "../todo.service";
 import {Todo} from "../todo";
 
 @Component({
@@ -9,7 +9,7 @@ import {Todo} from "../todo";
 })
 export class AddTodoComponent implements OnInit {
 
-  constructor(private heroService: HeroService) {
+  constructor(private heroService: TodoService) {
   }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo} from "../todo";
-import {HeroService} from "../hero.service";
+import {TodoService} from "../todo.service";
 
 @Component({
   selector: 'app-list-todo',
@@ -10,7 +10,7 @@ import {HeroService} from "../hero.service";
 export class ListTodoComponent implements OnInit {
   todos: Todo[];
 
-  constructor(private heroService: HeroService) {
+  constructor(private heroService: TodoService) {
     this.todos = heroService.todos;
   }
 
