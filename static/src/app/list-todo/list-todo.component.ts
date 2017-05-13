@@ -11,7 +11,7 @@ export class ListTodoComponent implements OnInit {
   todos: Todo[];
 
   constructor(private heroService: TodoService) {
-    this.todos = heroService.todos;
+    heroService.getTodos().then(todos => this.todos = todos);
   }
 
   ngOnInit() {
