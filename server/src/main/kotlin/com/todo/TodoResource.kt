@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @CrossOrigin(origins = arrayOf("*"), allowCredentials = "true", allowedHeaders = arrayOf("*"))
-class TodoResource {
-
-    val todoList = mutableListOf(Todo("Todo 1"), Todo("Todo 2"))
+class TodoResource (val repository: TodoRepository) {
 
     @GetMapping("todo")
-    fun getTodos() = todoList
+    fun getTodos() = repository.findAll()
 
 }
+
