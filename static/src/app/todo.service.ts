@@ -1,31 +1,32 @@
 import {Injectable} from '@angular/core';
 import {Todo} from "./todo";
-import {Http} from "@angular/http";
+import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class TodoService {
-  todosUrl = "http://localhost:8080/todo";
-  todos: Todo[];
+  private headers: Headers = new Headers({'Content-Type': 'application/json'});
+  private options = new RequestOptions({headers: this.headers});
+  private todosUrl = "http://localhost:8080/todo";
 
   constructor(private http: Http) {
-    this.getTodos();
   }
 
   create(todo: Todo) {
-    return this.http.post(this.todosUrl, todo).toPromise().then(res => res.json()).catch(this.handleError)
+    return this.http.post(this.todosUrl, JSON.stringify(todo), this.options)
+      .toPromise().then(res => res.json())
+      .catch(TodoService.handleError)
   }
 
-  getTodos() {
+  getTodos(): Observable<Todo[]> {
     return this.http.get(
-      this.todosUrl).toPromise()
-      .then(response => this.todos = response.json())
-      .catch(this.handleError);
+      this.todosUrl).map((res: Response) => res.json());
   }
 
-  private handleError(error: any): Promise<any> {
+  private static handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // For demo purposes only
     return Promise.reject(error.message || error);
   }
-
 }

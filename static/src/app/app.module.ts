@@ -4,15 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AddTodoComponent } from './add-todo/add-todo.component';
-import { ListTodoComponent } from './list-todo/list-todo.component';
 import {TodoService} from "./todo.service";
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddTodoComponent,
-    ListTodoComponent
+    TodoComponent
   ],
   imports: [
     BrowserModule,

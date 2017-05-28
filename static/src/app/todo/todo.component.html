@@ -1,2 +1,5 @@
 <input #text (keyup.enter)="createTodo(text.value); text.value = ''" class="new-todo"
        placeholder="What needs to be done?">
+<ul class="todo-list">
+  <li *ngFor="let todo of todos | async"><label>{{todo.description}}</label></li>
+</ul>

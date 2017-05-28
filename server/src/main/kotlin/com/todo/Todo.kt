@@ -5,6 +5,6 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
-class Todo(var description: String = "",
+class Todo(var description: String,
            @Id @GeneratedValue
-           var id: Long = 0)
+           var id: Long? =  null)
